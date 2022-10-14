@@ -1,0 +1,128 @@
+body {
+    text-align: center;
+    position: relative;
+}
+
+.background_field_player {
+    margin-top: 50px;
+    width: 70%;
+    height: 600px;
+    background: url('../images/arena.png') center center/cover no-repeat;
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    display: grid;
+    column-gap: 4%;
+    grid-template-columns: 48% 48%;
+    grid-template-rows: 33% 33% 33%;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.alert {
+    position: absolute;
+    z-index: 99999;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+}
+
+.player {
+    width: 150px;
+    height: 170px;
+    display: block;
+    margin: 0 auto;
+    transition: 0.6s;
+    cursor: pointer;
+}
+
+.player:hover {
+    transform: translateY(-10px);
+    filter: drop-shadow(5px 5px 5px #fff);
+}
+
+.player_1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background: url("../images/pikachu.png") center -50px/cover no-repeat;
+
+
+}
+
+.player_2 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background: url("../images/bulbasaur.png") center -50px/cover no-repeat;;
+}
+
+.player_3 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background: url("../images/charmander.png") center -50px/cover no-repeat;
+}
+
+.player_4 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background: url("../images/slowpoke.png") center -50px/cover no-repeat;
+}
+
+.player_5 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    background: url("../images/squirtle.png") center -50px/cover no-repeat;
+}
+
+.score__field {
+    padding-top: 15px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.score__field__text {
+    color: red;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.score__field__number {
+    margin-left: 20px;
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+.change_player {
+    margin-right: 50px;
+    width: 180px;
+    height: 60px;
+    font-size: 16px;
+    text-transform: uppercase;
+    background-color: red;
+    color: white;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0px 0px 30px #000;
+    cursor: pointer;
+}
