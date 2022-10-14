@@ -33,8 +33,8 @@ const background = document.querySelector('.background_field_player'),
 
 button.innerText = "change player";
 
-alertWin.src = "../images/win.png";
-alertLose.src = "../images/lose.png";
+alertWin.src = "images/win.png";
+alertLose.src = "images/lose.png";
 
 scoreField.classList.add('score__field');
 scoreText.classList.add('score__field__text');
