@@ -134,6 +134,7 @@ body {
     transform: translateX(-50%);
     width: 192px;
     height: 192px;
+    touch-action: manipulation;
 }
 .up {
     position: absolute;

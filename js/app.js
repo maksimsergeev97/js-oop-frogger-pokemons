@@ -39,13 +39,13 @@ const background = document.querySelector('.background_field_player'),
 
 button.innerText = "change player";
 
-alertWin.src = "images/win.png";
-alertLose.src = "images/lose.png";
+alertWin.src = "../images/win.png";
+alertLose.src = "../images/lose.png";
 
-upButton.src = 'images/up.png';
-rightButton.src = 'images/right.png';
-downButton.src = 'images/down.png';
-leftButton.src = 'images/left.png';
+upButton.src = '../images/up.png';
+rightButton.src = '../images/right.png';
+downButton.src = '../images/down.png';
+leftButton.src = '../images/left.png';
 
 scoreField.classList.add('score__field');
 scoreText.classList.add('score__field__text');
@@ -202,7 +202,7 @@ Player.prototype.handleInput = function (keyNumber) {
             }
             break;
         case 'up':
-            if(this.primaryPositionY > minPositionY) {
+            if(this.primaryPositionY > minPositionY && background.classList.contains('hide')) {
                 this.primaryPositionY += -this.stepY;
                 this.addScore();
                 maxSpeed += addedSpeed;
@@ -230,7 +230,10 @@ Player.prototype.handleInput = function (keyNumber) {
 
 Player.prototype.enterPlayer = function (url) {
     this.sprite = url;
+    
 }
+
+const player = new Player (200, 380, 'images/pikachu.png')
 
 background.addEventListener('click', (e) => {
     const target = e.target;
@@ -245,8 +248,6 @@ background.addEventListener('click', (e) => {
 button.addEventListener('click', () => {
     background.classList.toggle('hide');
 })
-
-const player = new Player (200, 380, 'images/pikachu.png')
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -279,10 +280,6 @@ document.addEventListener('keyup', function(e) {
 
 // This listens for button click and sends the buttons to your
 // Player.handleInput() method.
-
-mobileControler.addEventListener('dblclick', (e) => {
-    e.preventDefault();
-})
 
 mobileControler.addEventListener('click', (e) => {
     const target = e.target;
