@@ -29,12 +29,23 @@ const background = document.querySelector('.background_field_player'),
       scoreNumber = document.createElement('p'),
       button = document.createElement('button'),
       alertWin = document.createElement('img'),
-      alertLose = document.createElement('img');      
+      alertLose = document.createElement('img'),
+
+      mobileControler = document.createElement('div'),
+      upButton = document.createElement('img'),
+      rightButton = document.createElement('img'),
+      downButton = document.createElement('img'),
+      leftButton = document.createElement('img');
 
 button.innerText = "change player";
 
-alertWin.src = "images/win.png";
-alertLose.src = "images/lose.png";
+alertWin.src = "../images/win.png";
+alertLose.src = "../images/lose.png";
+
+upButton.src = '../images/up.png';
+rightButton.src = '../images/right.png';
+downButton.src = '../images/down.png';
+leftButton.src = '../images/left.png';
 
 scoreField.classList.add('score__field');
 scoreText.classList.add('score__field__text');
@@ -45,6 +56,12 @@ alertWin.classList.add('hide');
 alertLose.classList.add('alert');
 alertLose.classList.add('hide');
 
+mobileControler.classList.add('controller');
+upButton.classList.add('up');
+rightButton.classList.add('right');
+downButton.classList.add('down');
+leftButton.classList.add('left');
+
 document.querySelector('body').prepend(alertWin);
 document.querySelector('body').prepend(alertLose);
 document.querySelector('body').prepend(scoreField);
@@ -53,6 +70,13 @@ scoreNumber.innerText = playerScore;
 scoreField.appendChild(button);
 scoreField.appendChild(scoreText);
 scoreField.appendChild(scoreNumber);
+
+document.querySelector('body').appendChild(mobileControler);
+mobileControler.appendChild(upButton);
+mobileControler.appendChild(rightButton);
+mobileControler.appendChild(downButton);
+mobileControler.appendChild(leftButton);
+
 
 
 const Character = function (x,y,sprite) {
@@ -252,76 +276,12 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-//Чувствительность — количество пикселей, после которого жест будет считаться свайпом
-const sensitivity = 20;
+// This listens for button click and sends the buttons to your
+// Player.handleInput() method.
 
-let touchStart = null; //Точка начала касания
-let touchPosition = null; //Текущая позиция
-
-//Перехватываем события
-document.addEventListener("touchstart", function (e) { TouchStart(e); }); //Начало касания
-document.addEventListener("touchmove", function (e) { TouchMove(e); }); //Движение пальцем по экрану
-//Пользователь отпустил экран
-document.addEventListener("touchend", function (e) { TouchEnd(e); });
-//Отмена касания
-document.addEventListener("touchcancel", function (e) { TouchEnd(e); });
-
-function TouchStart(e)
-{
-    //Получаем текущую позицию касания
-    touchStart = { x: e.changedTouches[0].clientX, y: e.changedTouches[0].clientY };
-    touchPosition = { x: touchStart.x, y: touchStart.y };
-}
-
-function TouchMove(e)
-{
-    //Получаем новую позицию
-    touchPosition = { x: e.changedTouches[0].clientX, y: e.changedTouches[0].clientY };
-}
-
-function TouchEnd()
-{
-    CheckAction(); //Определяем, какой жест совершил пользователь
-
-    //Очищаем позиции
-    touchStart = null;
-    touchPosition = null;
-}
-
-function CheckAction()
-{
-    let d = //Получаем расстояния от начальной до конечной точек по обеим осям
-    {
-   	 x: touchStart.x - touchPosition.x,
-   	 y: touchStart.y - touchPosition.y
-    };
-
-    if(Math.abs(d.x) > Math.abs(d.y)) //Проверяем, движение по какой оси было длиннее
-    {
-   	 if(Math.abs(d.x) > sensitivity) //Проверяем, было ли движение достаточно длинным
-   	 {
-   		 if(d.x > 0) //Если значение больше нуля, значит пользователь двигал пальцем справа налево
-   		 {
-            player.handleInput("left")
-   		 }
-   		 else //Иначе он двигал им слева направо
-   		 {
-            player.handleInput("right")
-   		 }
-   	 }
+mobileControler.addEventListener('click', (e) => {
+    const target = e.target;
+    if(target && target.classList.contains('up') || target && target.classList.contains('right') || target && target.classList.contains('down') || target && target.classList.contains('left')) {
+        player.handleInput(target.className);
     }
-    else //Аналогичные проверки для вертикальной оси
-    {
-   	 if(Math.abs(d.y) > sensitivity)
-   	 {
-   		 if(d.y > 0) //Свайп вверх
-   		 {
-            player.handleInput("up")
-   		 }
-   		 else //Свайп вниз
-   		 {
-            player.handleInput("down")
-   		 }
-   	 }
-    }
-}
+})

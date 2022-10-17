@@ -126,3 +126,40 @@ body {
     box-shadow: 0px 0px 30px #000;
     cursor: pointer;
 }
+
+.controller {
+    position: absolute;
+    top: 750px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 192px;
+    height: 192px;
+}
+.up {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.right {
+    position: absolute;
+    top: 64px;
+    right: 0;
+}
+.down {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.left {
+    position: absolute;
+    top: 64px;
+    left: 0;
+}
+
+@media (min-width: 1200px) {
+    .controller {
+        display: none;
+    }
+}
