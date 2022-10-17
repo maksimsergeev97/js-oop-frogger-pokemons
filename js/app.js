@@ -39,13 +39,13 @@ const background = document.querySelector('.background_field_player'),
 
 button.innerText = "change player";
 
-alertWin.src = "images/win.png";
-alertLose.src = "images/lose.png";
+alertWin.src = "../images/win.png";
+alertLose.src = "../images/lose.png";
 
-upButton.src = 'images/up.png';
-rightButton.src = 'images/right.png';
-downButton.src = 'images/down.png';
-leftButton.src = 'images/left.png';
+upButton.src = '../images/up.png';
+rightButton.src = '../images/right.png';
+downButton.src = '../images/down.png';
+leftButton.src = '../images/left.png';
 
 scoreField.classList.add('score__field');
 scoreText.classList.add('score__field__text');
@@ -132,11 +132,13 @@ Enemy.prototype.collision = function () {
             setTimeout(() => {
                 minSpeed = 50;
                 maxSpeed = 150;
-                player.respawn();
                 player.zeroingScore();
                 respaunEnemies ();
+                alertLose.classList.add('hide');
+                alertLose.classList.remove('show');
 
             }, 1000)
+            player.respawn();
     }
 }
 
@@ -164,8 +166,7 @@ Player.prototype.update = function(dt) {
 Player.prototype.respawn = function () {
     this.primaryPositionX = playerPrimaryPositionX;
     this.primaryPositionY = playerPrimaryPositionY;
-    alertLose.classList.add('hide');
-    alertLose.classList.remove('show');
+
 }
 
 Player.prototype.addScore = function () {
