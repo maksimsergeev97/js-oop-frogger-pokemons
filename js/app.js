@@ -280,6 +280,10 @@ document.addEventListener('keyup', function(e) {
 // This listens for button click and sends the buttons to your
 // Player.handleInput() method.
 
+mobileControler.addEventListener('dblclick', (e) => {
+    e.preventDefault();
+})
+
 mobileControler.addEventListener('click', (e) => {
     const target = e.target;
     if(target && target.classList.contains('up') || target && target.classList.contains('right') || target && target.classList.contains('down') || target && target.classList.contains('left')) {
