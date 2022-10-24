@@ -24,8 +24,9 @@ const playerPrimaryPositionX = 200,
 let   playerScore = 0;
 
 const background = document.querySelector('.background_field_player'),
-      scoreField = document.createElement('div');
-      scoreText = document.createElement('p');
+      enterPlayerText = document.querySelector('.enter__player'),
+      scoreField = document.createElement('div'),
+      scoreText = document.createElement('p'),
       scoreNumber = document.createElement('p'),
       button = document.createElement('button'),
       alertWin = document.createElement('img'),
@@ -48,6 +49,7 @@ downButton.src = 'images/down.png';
 leftButton.src = 'images/left.png';
 
 scoreField.classList.add('score__field');
+scoreField.classList.add('hide');
 scoreText.classList.add('score__field__text');
 scoreNumber.classList.add('score__field__number');
 button.classList.add('change_player');
@@ -57,6 +59,7 @@ alertLose.classList.add('alert');
 alertLose.classList.add('hide');
 
 mobileControler.classList.add('controller');
+mobileControler.classList.add('hide');
 upButton.classList.add('up');
 rightButton.classList.add('right');
 downButton.classList.add('down');
@@ -158,10 +161,14 @@ Player.prototype = Object.create(Character.prototype);
 // a handleInput() method.
 
 Player.prototype.update = function(dt) {
+};
+
+Player.prototype.test = function () {
     if(this.primaryPositionY <= minPositionY) {
         setTimeout(() => {this.win()}, 1000)
     };
-};
+}
+
 
 Player.prototype.respawn = function () {
     this.primaryPositionX = playerPrimaryPositionX;
@@ -205,6 +212,7 @@ Player.prototype.handleInput = function (keyNumber) {
             if(this.primaryPositionY > minPositionY && background.classList.contains('hide')) {
                 this.primaryPositionY += -this.stepY;
                 this.addScore();
+                this.test();
                 maxSpeed += addedSpeed;
                 minSpeed += addedSpeed;
             } else {
@@ -230,7 +238,6 @@ Player.prototype.handleInput = function (keyNumber) {
 
 Player.prototype.enterPlayer = function (url) {
     this.sprite = url;
-    
 }
 
 const player = new Player (200, 380, 'images/pikachu.png')
@@ -242,6 +249,9 @@ background.addEventListener('click', (e) => {
         const urlPlayer = url.substring(url.indexOf('images'), url.length - 2)
         player.enterPlayer(urlPlayer);
         background.classList.add('hide');
+        enterPlayerText.classList.add('hide');
+        scoreField.classList.remove('hide');
+        mobileControler.classList.remove('hide');
     };
 });
 

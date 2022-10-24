@@ -1,15 +1,15 @@
 body {
     text-align: center;
     position: relative;
+    touch-action: manipulation;
 }
 
 .background_field_player {
-    margin-top: 50px;
     width: 70%;
     height: 600px;
     background: url('../images/arena.png') center center/cover no-repeat;
     position: absolute;
-    top: 70px;
+    top: 100px;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 5px;
@@ -19,8 +19,16 @@ body {
     grid-template-rows: 33% 33% 33%;
 }
 
+.enter__player {
+    margin: 20px;
+    font-size: 55px;
+    text-transform: uppercase;
+    color: red;
+    font-weight: 900;
+}
+
 .hide {
-    display: none;
+    display: none !important;
 }
 
 .show {
@@ -132,30 +140,37 @@ body {
     top: 750px;
     left: 50%;
     transform: translateX(-50%);
-    width: 192px;
-    height: 192px;
-    touch-action: manipulation;
+    width: 280px;
+    height: 280px;
 }
 .up {
+    width: 100px;
+    height: 100px;
     position: absolute;
     top: 0px;
     left: 50%;
     transform: translateX(-50%);
 }
 .right {
+    width: 100px;
+    height: 100px;
     position: absolute;
-    top: 64px;
+    top: 90px;
     right: 0;
 }
 .down {
+    width: 100px;
+    height: 100px;
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
 }
 .left {
+    width: 100px;
+    height: 100px;
     position: absolute;
-    top: 64px;
+    top: 90px;
     left: 0;
 }
 
